@@ -6,7 +6,12 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
-
+/* this class helps in validating user input during
+the registration process. It ensures that the email
+follows the correct format, the password meets certain
+complexity requirements, and the confirmation password
+is not empty. These validations are crucial for maintaining
+ data integrity and security in a web application.*/
 @Getter
 @Setter
 public class RegisterUserFormBean {
@@ -20,5 +25,4 @@ public class RegisterUserFormBean {
 
     @NotEmpty(message = "Confirm Password cannot be empty")
     private String confirmPassword;
-
 }

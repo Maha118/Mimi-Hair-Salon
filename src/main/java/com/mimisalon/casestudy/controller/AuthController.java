@@ -11,7 +11,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
-
+/*this controller manages login and registration-related requests,
+validates registration form input, and interacts with a UserService
+ to handle user-related operations.*/
 @Slf4j
 @Controller
 public class AuthController {
@@ -19,14 +21,12 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/auth/login")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView();
         response.setViewName("auth/login");
         return response;
     }
-
 
     @GetMapping("/auth/register")
     public ModelAndView register() {

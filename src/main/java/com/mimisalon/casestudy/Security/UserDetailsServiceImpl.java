@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/*this class ensures that Spring Security can authenticate
+users by loading their details from the database and configuring
+roles for authorization. The logger (log) helps with logging during runtime.
+ */
 @Slf4j
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -32,7 +36,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         User user = userDao.findByEmailIgnoreCase(username);
 
-        // if we did not find the user in the database then we throw an exception because the user is not valid
         if (user == null) {
             throw new UsernameNotFoundException("Username '" + username + "' not found in database");
         }
@@ -44,9 +47,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         List<UserRole> userRoles = userRoleDao.findByUserId(user.getId());
 
-        // setup user roles
         Collection<? extends GrantedAuthority> springRoles = buildGrantAuthorities(userRoles);
-
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), accountIsEnabled,
                 accountNonExpired, credentialsNonExpired, accountNonLocked, springRoles);
@@ -59,7 +60,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(role.getRoleName().toString()));
         }
 
-        // always add the user role
         authorities.add(new SimpleGrantedAuthority("USER"));
 
         return authorities;
