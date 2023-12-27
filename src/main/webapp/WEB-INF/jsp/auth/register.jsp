@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/include/header.jsp"/>
+<jsp:include page="../include/header.jsp"/>
 
 <section>
     <div class="bg-light2 pt-5 pb-5">
@@ -31,6 +31,7 @@
                         </div>
                     </c:if>
 
+
                     <div class="mt-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="text" class="form-control" id="password" name="password" value="${form.password}">
@@ -43,6 +44,7 @@
                         </div>
                     </c:if>
 
+
                     <div class="mt-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                         <input type="text" class="form-control" id="confirmPassword" name="confirmPassword" value="${form.confirmPassword}">
@@ -54,11 +56,12 @@
                             </c:forEach>
                         </div>
                     </c:if>
-                       <button type="submit" class="btn btn-primary mt-4">Submit</button>
+
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
 
-<jsp:include page="/include/footer.jsp"/>
+<jsp:include page="../include/footer.jsp"/>

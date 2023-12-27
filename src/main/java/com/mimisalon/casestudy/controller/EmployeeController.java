@@ -4,6 +4,7 @@ package com.mimisalon.casestudy.controller;
 import com.mimisalon.casestudy.database.dao.EmployeeDAO;
 import com.mimisalon.casestudy.database.entity.Employee;
 import com.mimisalon.casestudy.form.CreateEmployeeFormBean;
+import com.mimisalon.casestudy.service.EmployeeService;
 import io.micrometer.common.util.StringUtils;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,10 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeDAO employeeDAO;
+
+    @Autowired
+    private EmployeeService employeeeService;
+
 
     @GetMapping("/employee/search")
     public ModelAndView search(@RequestParam(required = false) String firstNameSearch,
@@ -44,7 +49,8 @@ public class EmployeeController {
             }
 
             // we only want to do this code if the user has entered either a first name or a last name
-            List<Employee> employees = employeeDAO.findByFirstNameandLastName(firstNameSearch, lastNameSearch);
+            List<Employee> employees = employeeDAO
+                    .findByFirstNameandLastName(firstNameSearch, lastNameSearch);
 
             response.addObject("employeeVar", employees);
 

@@ -2,6 +2,7 @@ package com.mimisalon.casestudy.controller;
 
 import com.mimisalon.casestudy.database.entity.User;
 import com.mimisalon.casestudy.form.RegisterUserFormBean;
+import com.mimisalon.casestudy.service.AuthenticatedUserService;
 import com.mimisalon.casestudy.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,10 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthenticatedUserService authenticatedUserService;
+
 
     @GetMapping("/auth/login")
     public ModelAndView login() {
