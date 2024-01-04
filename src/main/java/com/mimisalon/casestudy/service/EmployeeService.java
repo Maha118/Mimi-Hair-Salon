@@ -26,10 +26,8 @@ public class EmployeeService {
 
         Employee employee = employeeDao.findById(form.getId());
 
-
         if ( employee == null ) {
             employee = new Employee();
-
         }
 
         employee.setFirstName(form.getFirstName());

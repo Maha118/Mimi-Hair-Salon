@@ -10,7 +10,7 @@ public class CreateBookingFormBean {
 
     private Integer id;
     private String customerName;
-    private String service; // Updated to match the Booking entity
+    private String service_id; // Updated to match the Booking entity
     private Date date;
     private String status;
 

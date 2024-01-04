@@ -17,6 +17,6 @@ public interface BookingDAO extends JpaRepository<Booking, Long> {
     @Query("SELECT b FROM Booking b WHERE b.status = :status")
     List<Booking> findByStatus(String status);
 
-    @Query("SELECT b FROM Booking b WHERE b.service.id = :serviceId")
-    List<Booking> findByServiceId(Long serviceId);
+    @Query("SELECT b FROM Booking b WHERE b.service_id = :service_Id")
+    List<Booking> findByService_Id(Long service_Id);
 }

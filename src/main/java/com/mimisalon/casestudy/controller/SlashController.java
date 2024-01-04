@@ -17,6 +17,7 @@ public class SlashController {
     public ModelAndView about() {
         ModelAndView response = new ModelAndView("about");
         return response;
+
     }
 
 }

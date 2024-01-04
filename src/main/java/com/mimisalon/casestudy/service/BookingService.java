@@ -21,14 +21,14 @@ public class BookingService {
 
     public Booking createOrUpdateBooking(CreateBookingFormBean form) {
         log.debug("customerName: " + form.getCustomerName());
-        log.info("service: " + form.getService());
+        log.info("service_id: " + form.getService_id());
         log.info("date: " + form.getDate());
         log.info("status: " + form.getStatus());
 
         // Create a Booking entity and populate it with form data
         Booking booking = new Booking();
         booking.setCustomerName(form.getCustomerName());
-        booking.setService(form.getService());
+        booking.setService_id(form.getService_id());
         booking.setDate(form.getDate());
         booking.setStatus(form.getStatus());
         // Add more fields as needed

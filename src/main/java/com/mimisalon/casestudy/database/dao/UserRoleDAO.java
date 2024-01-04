@@ -1,6 +1,5 @@
 package com.mimisalon.casestudy.database.dao;
 
-
 import com.mimisalon.casestudy.database.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 

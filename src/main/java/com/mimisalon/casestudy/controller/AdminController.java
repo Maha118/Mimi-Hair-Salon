@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController {
-
     @GetMapping("/admin/index")
     public ModelAndView index() {
         log.debug("Admin index page requested");

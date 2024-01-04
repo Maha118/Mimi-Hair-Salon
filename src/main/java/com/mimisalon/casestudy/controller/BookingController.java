@@ -20,8 +20,7 @@ public class BookingController {
     private final BookingService bookingService;
 
     @Autowired
-    public BookingController(BookingService bookingService) {
-        this.bookingService = bookingService;
+    public BookingController(BookingService bookingService) {this.bookingService = bookingService;
     }
 
     @GetMapping("/create")
@@ -36,8 +35,9 @@ public class BookingController {
     public String createBookingSubmit(@ModelAttribute("form") CreateBookingFormBean form) {
         // Use CreateBookingFormBean to create a Booking entity
         Booking booking = new Booking();
+
         booking.setCustomerName(form.getCustomerName());
-        booking.setService(form.getService());
+        booking.setService_id(form.getService_id());
         booking.setDate(form.getDate());
         booking.setStatus(form.getStatus());
 
@@ -63,7 +63,7 @@ public class BookingController {
         if (booking != null) {
             form.setId(booking.getId());
             form.setCustomerName(booking.getCustomerName());
-            form.setService(booking.getService());
+            form.setService_id(booking.getService_id());
             form.setDate(booking.getDate());
             form.setStatus(booking.getStatus());
             // Add more fields as needed

@@ -26,8 +26,6 @@
             <td>${service.price}</td>
         </tr>
     </table>
-
-
 </div>
 
 <!-- Display Booking Information -->

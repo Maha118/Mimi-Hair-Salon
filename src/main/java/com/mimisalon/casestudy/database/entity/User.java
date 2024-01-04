@@ -31,5 +31,4 @@ public class User {
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate;
-
 }

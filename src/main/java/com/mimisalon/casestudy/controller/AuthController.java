@@ -25,7 +25,6 @@ public class AuthController {
     @Autowired
     private AuthenticatedUserService authenticatedUserService;
 
-
     @GetMapping("/auth/login")
     public ModelAndView login() {
         ModelAndView response = new ModelAndView();
@@ -61,7 +60,6 @@ public class AuthController {
 
         ModelAndView response = new ModelAndView();
         response.setViewName("redirect:/");
-
         return response;
     }
 

@@ -81,8 +81,6 @@ public class EmployeeController {
         log.info("phone:" + form.getPhone());
         log.info("speciality:" + form.getSpeciality());
 
-
-
         Employee employee = new Employee();
 
         employee.setFirstName(form.getFirstName());
