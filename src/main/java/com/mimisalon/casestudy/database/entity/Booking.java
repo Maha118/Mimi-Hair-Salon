@@ -14,19 +14,17 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer Id;
-
-
-
-    @Column(name = "customerName")
-    private String customerName;
+    private Integer id;
 
     @Column(name = "service_id")
-    private String service_id;
+    private Integer service_id;
 
     @Column(name = "date")
     private Date date;
 
     @Column(name = "status")
     private String status;
+
+    @Column(name = "employee_id")
+    private Integer employee_id;
 }

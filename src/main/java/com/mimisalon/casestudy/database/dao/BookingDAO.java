@@ -9,14 +9,5 @@ import java.util.Optional; // Import Optional
 
 public interface BookingDAO extends JpaRepository<Booking, Long> {
 
-    List<Booking> findById(Integer id); // Use Optional<Booking> here
 
-    List<Booking> findByCustomerName(String customerName);
-
-    // Add your custom queries here using the @Query annotation
-    @Query("SELECT b FROM Booking b WHERE b.status = :status")
-    List<Booking> findByStatus(String status);
-
-    @Query("SELECT b FROM Booking b WHERE b.service_id = :service_Id")
-    List<Booking> findByService_Id(Long service_Id);
 }

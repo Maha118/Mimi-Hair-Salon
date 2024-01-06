@@ -13,41 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-@Controller
-@RequestMapping("/service")
+
 public class SalonServiceController {
-    private final SalonServiceService salonServiceService;
 
-    @Autowired
-    public SalonServiceController(SalonServiceService salonServiceService) {
-        this.salonServiceService = salonServiceService;
-    }
-
-    @GetMapping("/edit/{serviceId}")
-    public ModelAndView editService(@PathVariable Integer serviceId, @RequestParam(required = false) String success) {
-        ModelAndView response = new ModelAndView("service/edit");
-
-        Optional<SalonService> salonServiceOptional = salonServiceService.getServiceById(serviceId);
-
-        if (success != null) {
-            response.addObject("success", success);
-        }
-
-
-        CreateSalonServiceFormBean form = new CreateSalonServiceFormBean();
-
-        if (salonServiceOptional.isPresent()) {
-            SalonService salonService = salonServiceOptional.get();
-            form.setId(salonService.getId());
-            form.setName(salonService.getName());
-            form.setDescription(salonService.getDescription());
-            form.setPrice(salonService.getPrice());
-            response.addObject("form", form);
-        } else {
-            response.setViewName("redirect:/service/error");
-            return response;
-        }
-
-        return response;
-    }
 }

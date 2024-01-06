@@ -29,7 +29,7 @@ public class SecurityConfig {
 
         http.authorizeRequests()
                 .requestMatchers(
-                        new AntPathRequestMatcher("/customer/**"),
+
                         new AntPathRequestMatcher("/employee/**"),
                         new AntPathRequestMatcher("/Service/**"),
                         new AntPathRequestMatcher("/admin/**"),
