@@ -10,9 +10,9 @@ import java.util.Date;
 public class CreateBookingFormBean {
 
     private Integer id;
-    private Integer service_id; // Updated to match the Booking entity
-    private Date date;
-    private String status;
+    private Integer user_id;
+    private Integer service_id;
+    private Date appointment_time;
     private Integer employee_id;
 
 }

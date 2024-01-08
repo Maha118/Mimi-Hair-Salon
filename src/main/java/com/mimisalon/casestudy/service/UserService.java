@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -19,7 +21,6 @@ public class UserService {
     private UserDAO userDao;
     @Lazy
     @Autowired
-
     private PasswordEncoder passwordEncoder;
 
     public User createNewUser(RegisterUserFormBean form) {
@@ -33,6 +34,13 @@ public class UserService {
 
         user.setCreateDate(new Date());
         return userDao.save(user);
+    }
+
+    public List<User> findAll() {
+        return userDao.findAll();
+    }
+    public Optional<User> findById(Integer id) {
+        return userDao.findById(id);
     }
 }
 

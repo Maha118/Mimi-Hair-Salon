@@ -14,6 +14,7 @@ public class CreateEmployeeFormBean {
     private String lastName;
     private String phone;
     private String speciality;
+    private String imageUrl;
 }
 
 

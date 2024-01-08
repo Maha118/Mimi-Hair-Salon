@@ -1,6 +1,4 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="crt"%>
@@ -13,7 +11,7 @@
 }
 </style>
 <head>
-<meta charset="ISO-8859-1">
+ <meta charset="utf-8">
 <title>Insert title here</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet"
@@ -31,6 +29,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
+
 </head>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -94,6 +93,7 @@
 	});
 	new WOW().init();
 </script>
+</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 	AOS.init();
@@ -117,7 +117,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
-					<c:if test="${sessionScope.user == null }">
+
 						<li class="nav-item active"><a class="nav-link text-white"
 							href="<c:url value = "/home" />">Home</a></li>
 						</li>
@@ -130,15 +130,43 @@
 						<li class="nav-item"><a class="nav-link text-white"
                         href="<c:url value = "/booking" />">Booking</a></li>
 
+                  <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item"><a class="nav-link text-white"
                         href="<c:url value = "/auth/register" />">Register</a></li>
 
                         <li class="nav-item"><a class="nav-link text-white"
                         href="<c:url value = "/auth/login" />">Login</a></li>
-					</c:if>
+                  </sec:authorize>
+                  <sec:authorize access="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/index">Admin</a>
+                    </li>
+                  </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
 
+                <div class="dropdown d-flex align-items-center me-3">
+                  <a class="btn btn-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" href="/employee/create">
+                        Employee
+                  </a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item text-dark" href="/employee/create">Add Employee</a></li>
+                        <li><a class="dropdown-item text-dark" href="/employee/details">Employee List</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-dark" href="/user/userlist">User List</a></li>
+                    </ul>
+                </div>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/logout">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href=""><sec:authentication property="principal.username"/></a>
+                    </li>
+                </sec:authorize>
 
+            </ul>
 
+		</div>
 
 			</div>
 		</div>
@@ -146,6 +174,8 @@
 	<!-- Header End -->
 
 	<!-- Header Section -->
-
+</body>
+</body>
+ <script src="/javaScript/myScript.js"></script>
 </body>
 </html>

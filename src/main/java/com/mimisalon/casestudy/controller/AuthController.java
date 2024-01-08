@@ -2,7 +2,7 @@ package com.mimisalon.casestudy.controller;
 
 import com.mimisalon.casestudy.database.entity.User;
 import com.mimisalon.casestudy.form.RegisterUserFormBean;
-import com.mimisalon.casestudy.service.AuthenticatedUserService;
+import com.mimisalon.casestudy.Security.AuthenticatedUserService;
 import com.mimisalon.casestudy.service.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +59,7 @@ public class AuthController {
         User u = userService.createNewUser(form);
 
         ModelAndView response = new ModelAndView();
-        response.setViewName("redirect:/");
+        response.setViewName("redirect:/home");
         return response;
     }
 

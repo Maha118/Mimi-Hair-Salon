@@ -8,7 +8,7 @@ import lombok.Setter;
 public class CreateSalonServiceFormBean {
     private Integer id;
     private String name;
-    private String description;
+    private String image_url;
     private Double price;
 
 }

@@ -42,13 +42,13 @@
     </div>
 </section>
 
-<c:if test="${not empty customerVar}">
+<c:if test="${not empty employeeVar}">
     <section class="bg-light1 pb-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
 
-                    <h3 class="text-center pb-3">Customers Found ${customerVar.size()}</h3>
+                    <h3 class="text-center pb-3">Employee Found ${employeeVar.size()}</h3>
 
                     <table class="table table-hover">
                         <tr>
@@ -61,16 +61,16 @@
                             <td>Image</td>
                             <td>Detail</td>
                         </tr>
-                        <c:forEach items="${customerVar}" var="customer">
+                        <c:forEach items="${employeeVar}" var="employee">
                             <tr>
                                 <td>${employee.id}</td>
                                 <td>${employee.firstName}</td>
                                 <td>${employee.lastName}</td>
                                 <td>${employee.phone}</td>
                                 <td>${employee.speciality}</td>
-                                <td><img src="${customer.imageUrl}" style="max-width:100px"></td>
-                                <td><a href="/employee/edit/${customer.id}">Edit</a></td>
-                                <td><a href="/employee/detail?id=${customer.id}">Detail</a>
+                                <td><img src="${employee.imageUrl}" style="max-width:100px"></td>
+                                <td><a href="/employee/edit/${employee.id}">Edit</a></td>
+                                <td><a href="/employee/detail?id=${employee.id}">Detail</a>
                             </tr>
                         </c:forEach>
                     </table>

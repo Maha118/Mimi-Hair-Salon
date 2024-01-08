@@ -33,6 +33,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.debug("User login attempt with username: " + username);
+
 
         User user = userDao.findByEmailIgnoreCase(username);
 

@@ -15,7 +15,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer Id;
+    private Integer id;
 
     @Column(name = "firstname")
     private String firstName;
@@ -28,5 +28,8 @@ public class Employee {
 
     @Column(name = "speciality")
     private String speciality;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
 }

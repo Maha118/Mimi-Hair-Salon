@@ -1,4 +1,4 @@
-package com.mimisalon.casestudy.service;
+package com.mimisalon.casestudy.Security;
 
 import com.mimisalon.casestudy.database.dao.UserDAO;
 import com.mimisalon.casestudy.database.entity.User;

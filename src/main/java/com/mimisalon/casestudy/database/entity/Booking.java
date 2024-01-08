@@ -14,17 +14,20 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
-    @Column(name = "service_id")
-    private Integer service_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user; // Change to User entity
 
-    @Column(name = "date")
-    private Date date;
+    @ManyToOne
+    @JoinColumn(name = "service_id", referencedColumnName = "id")
+    private SalonService service; // Change to Service entity
 
-    @Column(name = "status")
-    private String status;
+    @Column(name = "appointment_time")
+    private Date appointmentTime;
 
-    @Column(name = "employee_id")
-    private Integer employee_id;
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
+    private Employee employee; // Change to Employee entity
 }
