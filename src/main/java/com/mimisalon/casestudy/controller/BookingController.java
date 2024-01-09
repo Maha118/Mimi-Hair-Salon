@@ -16,10 +16,12 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +29,6 @@ import java.util.Optional;
 
 @Slf4j
 @Controller
-@RestController
-@RequestMapping
 public class BookingController {
 
     @Autowired
@@ -56,10 +56,9 @@ public class BookingController {
         this.employeeService = employeeService;
     }
 
-
     @GetMapping("/booking/create")
     public ModelAndView createBookingForm(HttpSession session) {
-        ModelAndView modelAndView = new ModelAndView("booking/create");
+        ModelAndView modelAndView = new ModelAndView("bookings/create");
 
         // Retrieve the selectedServices session attribute as a String
         String selectedServiceIds = (String) session.getAttribute("selectedServices");
@@ -88,14 +87,13 @@ public class BookingController {
 
 
 
-
     @GetMapping("/edit/{bookingId}")
     public ModelAndView editBookingForm(@PathVariable Long bookingId) {
         // Fetch the booking details by bookingId from your data source
         // Populate the form with the booking details
         Booking booking = bookingService.getBookingById(bookingId);
 
-        ModelAndView modelAndView = new ModelAndView("booking/service");
+        ModelAndView modelAndView = new ModelAndView("bookings/service");
         List<SalonService> services = salonServiceService.getAllServices();
         modelAndView.addObject("services", services);
         modelAndView.addObject("form", new CreateBookingFormBean()); // Form backing object
@@ -103,25 +101,44 @@ public class BookingController {
         return modelAndView;
     }
 
-    @GetMapping("booking/search")
-    public ModelAndView searchBookingById(@RequestParam("bookingId") Optional<Long> bookingId) {
-        ModelAndView response = new ModelAndView("booking/search");
+    @GetMapping("/booking/search")
+    public ModelAndView searchBookingById(@RequestParam(required = false) Long bookingId) {
+        ModelAndView response = new ModelAndView("bookings/search");
 
-        bookingId.ifPresent(id -> {
-            Booking booking = bookingService.getBookingById(id);
+        if (bookingId != null) {
+            Booking booking = bookingService.getBookingById(bookingId);
             if (booking != null) {
                 response.addObject("booking", booking);
             } else {
                 response.addObject("notFound", true);
             }
-        });
+        }
 
         return response;
     }
 
-    @GetMapping("/detail")
+
+
+
+        @GetMapping("/detail")
+        public String showBookingDetails(@RequestParam("id") Long bookingId, Model model) {
+            // Fetch the booking details based on the 'id' parameter
+            Booking booking = bookingService.getBookingById(bookingId);
+
+            if (booking != null) {
+                // If the booking is found, add it to the model for rendering in the JSP
+                model.addAttribute("booking", booking);
+                return "bookings/detail"; // Use the correct JSP page name
+            } else {
+                // Handle the case where the booking is not found (e.g., show an error page)
+                return "error"; // You can create an error JSP page
+            }
+        }
+
+
+    /*@GetMapping("/booking/detail")
     public ModelAndView bookingDetail(@RequestParam Integer id) {
-        ModelAndView response = new ModelAndView("booking/detail");
+        ModelAndView response = new ModelAndView("bookings/detail");
 
         Optional<Booking> bookingOptional = bookingService.findById(id);
 
@@ -133,7 +150,7 @@ public class BookingController {
 
         response.addObject("booking", bookingOptional.get());
         return response;
-    }
+    }*/
     // Populate the form bean from the Booking entity
     private void populateFormBean(CreateBookingFormBean form, Booking booking) {
         form.setId(booking.getId());
@@ -156,7 +173,7 @@ public class BookingController {
 
         if (result.hasErrors()) {
             // Handle errors
-            response.setViewName("booking/create");
+            response.setViewName("bookings/create");
             addDropdownAttributes(response); // Re-populate dropdowns
             return response;
         }
@@ -175,8 +192,8 @@ public class BookingController {
         Booking booking = new Booking();
         // Populate booking entity with form data
         booking.setUser(userService.findById(form.getUser_id()).orElse(null));
-        booking.setService(salonServiceService.findByServiceId(form.getService_id()).orElse(null));
-        booking.setEmployee(employeeService.findByEmployeeId(form.getEmployee_id()).orElse(null));
+        booking.setService(salonServiceService.findById(form.getService_id()));
+        booking.setEmployee(employeeService.findById(form.getEmployee_id()).orElse(null));
         booking.setAppointmentTime(form.getAppointment_time());
         // Set other fields as necessary
         return booking;
@@ -194,6 +211,5 @@ public class BookingController {
         // After completing the booking, you can display a success message or redirect to a confirmation page
         return "booking/confirmation";
     }
-
 
 }

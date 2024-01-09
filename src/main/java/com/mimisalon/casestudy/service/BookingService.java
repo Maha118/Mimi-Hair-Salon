@@ -49,7 +49,7 @@ public class BookingService {
 
         // Fetching the actual entities
         User user = userDAO.findById(form.getUser_id()).orElse(null);
-        SalonService service = salonServiceDAO.findById(form.getService_id()).orElse(null);
+        SalonService service = salonServiceDAO.findById(form.getService_id());
         Employee employee = employeeDao.findById(form.getEmployee_id()).orElse(null);
 
         // Create a Booking entity and populate it with the fetched entities

@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ include file="../include/header.jsp" %>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pub/css/global-style.css">
 
@@ -27,7 +30,7 @@
             <label for="employeeId">Select Employee:</label>
             <select id="employeeId" name="selectedEmployeeId" class="form-control">
                 <c:forEach items="${employees}" var="employee">
-                    <option value="${employee.id}">${employee.name}</option>
+                    <option value="${employee.id}">${employee.firstName}</option>
                 </c:forEach>
             </select>
         </div>
@@ -37,7 +40,5 @@
         <input type="submit" name="action" value="Next" class="btn btn-primary mt-3">
     </form>
 </div>
-
-
 
 <jsp:include page="../include/footer.jsp"/>

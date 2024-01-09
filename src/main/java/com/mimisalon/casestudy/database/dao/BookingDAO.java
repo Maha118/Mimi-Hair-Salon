@@ -1,6 +1,7 @@
 package com.mimisalon.casestudy.database.dao;
 
 import com.mimisalon.casestudy.database.entity.Booking;
+import com.mimisalon.casestudy.database.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +19,7 @@ public interface BookingDAO extends JpaRepository<Booking, Long> {
 
     // Assuming Booking has a field named 'service' which is a reference to the Service entity
     @Query("SELECT b FROM Booking b WHERE b.service.id = :serviceId")
-    List<Booking> findByServiceId(Integer serviceId);
+    List<Booking> findByServiceId(@Param("serviceId")Integer serviceId);
 
+    /*Optional<Employee> findByEmployeeId(Integer employeeId);*/
 }

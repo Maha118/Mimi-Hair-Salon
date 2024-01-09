@@ -23,7 +23,7 @@ public interface EmployeeDAO extends JpaRepository<Employee, Long> {
     Optional<Employee> findById(Integer id);
 
 
-        Optional<Employee> findByEmployeeId(Integer employeeId);
+    /*Optional<Employee> findByEmployeeId(Integer employeeId);*/
 
     }
 

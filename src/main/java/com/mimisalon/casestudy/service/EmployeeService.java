@@ -62,9 +62,9 @@ public class EmployeeService {
         return employeeDao.findById(id);
     }
 
-    public Optional<Employee> findByEmployeeId(Integer employeeId) {
+ /*   public Optional<Employee> findByEmployeeId(Integer employeeId) {
         return employeeDao.findByEmployeeId(employeeId);
-    }
+    }*/
 }
 
 

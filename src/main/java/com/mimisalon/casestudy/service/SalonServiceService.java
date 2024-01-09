@@ -27,9 +27,8 @@ public class SalonServiceService {
     public List<SalonService> getAllServiceServices() {
         return salonServiceDAO.findAll();
     }
-
-    public Optional<SalonService> getAllServiceServicesById(Integer id) {
-        return salonServiceDAO.findById(id);
+    public SalonService getsalonservicebyId(long id){
+        return salonServiceDAO.findById(id).orElse(null);
     }
 
     public SalonService createOrUpdateSalonService(CreateSalonServiceFormBean form) {
@@ -42,9 +41,9 @@ public class SalonServiceService {
 
         // If the form ID is not null, it means we are editing an existing SalonService
         if (form.getId() != null) {
-            Optional<SalonService> existingSalonService = getAllServiceServicesById(form.getId());
-            if (existingSalonService.isPresent()) {
-                service = existingSalonService.get();
+           List<SalonService> existingSalonService = getAllServiceServices();
+            if (existingSalonService.size()>0) {
+                service = existingSalonService.get(0);
             } else {
                 // Handle the case where the existing SalonService was not found
                 throw new IllegalArgumentException("SalonService with ID " + form.getId() + " not found.");
@@ -73,11 +72,12 @@ public class SalonServiceService {
         return salonServiceDAO.findAll();
     }
 
-    public Optional<SalonService> findById(Integer id) {
+    public SalonService findById(Integer id) {
         return salonServiceDAO.findById(id);
     }
 
-    public Optional<SalonService> findByServiceId(Integer serviceId) {
-        return salonServiceDAO.findByServiceId(serviceId);
-    }
+
+    /*public SalonService findByServiceId(Integer serviceId) {
+        return salonServiceDAO.findById(serviceId);
+    }*/
 }

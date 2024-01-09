@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -11,7 +12,7 @@
 }
 </style>
 <head>
- <meta charset="utf-8">
+
 <title>Insert title here</title>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet"
@@ -128,7 +129,10 @@
 							href="<c:url value = "/contactus" />">Contact Us</a></li>
 
 						<li class="nav-item"><a class="nav-link text-white"
-                        href="<c:url value = "/booking" />">Booking</a></li>
+                        href="<c:url value = "/booking/create" />">Booking</a></li>
+
+                        <li class="nav-item"><a class="nav-link text-white"
+                        href="<c:url value = "/booking/service" />">Services</a></li>
 
                   <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item"><a class="nav-link text-white"
