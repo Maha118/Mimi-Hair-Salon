@@ -42,5 +42,4 @@ Example of OutPuts
 
 ![Screenshot 2024-01-15 150319](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/2138f1a4-1344-454c-9c25-f5394dcc76eb)
 
-7. PayementList
-![Screenshot 2024-01-15 150921](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/afb40992-a1c0-4067-9a8c-c2dac5046022)
+
