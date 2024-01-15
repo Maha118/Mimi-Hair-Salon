@@ -35,10 +35,10 @@ Example of OutPuts
 4. Login Page
    ![Screenshot 2024-01-15 150329](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/cee185e4-5fcf-47dd-9963-297c81dea4a6)
 
-5.Add Service page
-![Screenshot 2024-01-15 150859](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/7dc45ede-a9f5-4abe-bf5c-2b31beff7221)
+5. Add Service page
+    ![Screenshot 2024-01-15 150859](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/7dc45ede-a9f5-4abe-bf5c-2b31beff7221)
 
-6.Service List
+6.  Service List
 
 ![Screenshot 2024-01-15 150319](https://github.com/Maha118/Mimi-Hair-Salon/assets/145039721/2138f1a4-1344-454c-9c25-f5394dcc76eb)
 
